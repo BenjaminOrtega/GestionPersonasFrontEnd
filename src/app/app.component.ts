@@ -16,7 +16,7 @@ export class AppComponent implements OnInit{
     public fb: FormBuilder,
     public estadosService: EstadosService,
     public paisService: PaisesService,
-    public personasService: PaisesService
+    public personasService: PersonasService
   ){
 
   }
