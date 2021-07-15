@@ -1,1 +1,71 @@
+<div class="formRegistro">
+
+  <H2>Crear Persona</H2>
+  <form [formGroup]="personaForm" (ngSubmit)="guardar()">
+
+    <div class="form-group">
+      <label>Nombre: </label>
+      <input type="text" formControlName="nombre" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Apellido: </label>
+      <input type="text" formControlName="apellido" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>edad: </label>
+      <input type="number" formControlName="edad" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Pais: </label>
+      <select name="pais" id="pais" formControlName="pais" class="form-control">
+        <option [ngValue]="pais.idPais" *ngFor="let pais of Paises">{{pais.nombre}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Estados: </label>
+      <select name="estado" id="estado" formControlName="estado"  class="form-control">
+        <option [ngValue]="estado.idEstado" *ngFor="let estado of Estados">{{estado.nombre}}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled] = "personaForm.invalid">Guardar</button>
+
+  </form>
+
+  <div class="formRegistro">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Edad</th>
+          <th>Pais</th>
+          <th>Estado</th>
+          <th>Obciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let persona of Personas">
+          <th>{{persona.nombre}}</th>
+          <td>{{persona.apellido}}</td>
+          <td>{{persona.edad}}</td>
+          <td>{{persona.pais.nombre}}</td>
+          <td>{{persona.estado.nombre}}</td>
+          <td><button type="submit" class="btn btn-danger" (click)="eliminarPersona(persona.idPersona)">Eliminar</button></td>
+          <td><button type="submit" class="btn btn-success" (click)="editar(persona)">Editar</button></td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+
+
 <router-outlet></router-outlet>
